@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>控制元素显示和隐藏的状态</title>
+<script src="../js/angular.js" type="text/javascript"></script>
+<style type="text/css">
+body{
+	font-size:12px;
+}
+ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+div{
+	margin:8px 0px;
+}
+</style>
+</head>
+<body>
+	<div ng-controller="c2_12">
+		<div ng-show={{isShow}}>冰凌</div>
+		<div ng-hide={{isHide}}>1568456324@qq.com</div>
+		<ul ng-switch on={{Switch}}>
+			<li ng-switch-when=1>冰凌</li>
+			<li ng-switch-when=2>48754153@qq.com</li>
+			<li ng-switch-default>更多。。。。。。</li>
+		</ul>
+	</div>
+		<script type="text/javascript">
+		var app = angular.module('myApp',[]);
+		app.controller("c2_12",['$scope',function c2_12($scope){
+			$scope.isShow = true;
+			$scope.isHide = false;
+			$scope.Switch = 3
+		}]);
+	</script>
+</body>
+</html>
