@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>has和get方法</title>
+<script src="../js/angular.min.js" type="text/javascript"></script>
+<style type="text/css">
+body{
+	font-size:12px;
+}
+.show{
+	border: solid 1px #ccc;
+	padding: 8px;
+	width:260px;
+	margin: 10px 0px;
+}
+</style>
+</head>
+<body>
+	<div ng-controller="c4_7">
+	</div>
+	 <script type="text/javascript">
+	 var app = angular.module('myApp',[])
+	 .factory("$custom",function(){
+		 return {
+			 print: function(msg){
+				console.log(msg);
+			 }
+		 };
+	 });
+	 var injector = angular.injector(["myApp","ng"]);
+	 var fun = function($custom){
+		 $custom.print("函数执行成功d");
+	 }
+	 injector.invoke(fun);
+	 app.controller("c4_7",function($scope,$custom){
+		 
+	 });
+	</script>
+</body>
+</html>
