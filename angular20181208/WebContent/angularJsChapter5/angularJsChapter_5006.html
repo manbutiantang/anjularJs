@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>view组件中的模板切换</title>
+<script src="../js/angular.js" type="text/javascript"></script>
+<script src="../js/angular-route.min.js" type="text/javascript"></script>
+<style type="css/text">
+body{
+	font-size:12px;
+}
+.show{
+	background-color:#ccc;
+	padding:8px;
+	width:260px;
+	margin: 10px 0px;
+}
+</style>
+</head>
+<body>
+	<div>
+		<a href="#!/">首页</a>|
+		<a href="#!/book">图书</a>|
+		<a href="#!/game">商城</a>
+	</div>
+	<div ng-view></div>
+	<script type="text/javascript">
+		var app = angular.module("myApp",["ngRoute"]);
+		app.controller("c6_1",function($scope){
+			$scope.title = "这是首页";
+		});
+		app.controller("c6_2",function($scope){
+			$scope.title = "这是图书页";
+		});
+		app.controller("c6_3",function($scope){
+			$scope.title = "这是商城页";
+		});
+		app.config(["$routeProvider",function($routeProvider){
+			$routeProvider
+				.when("/",{
+					controller : "c6_1",
+					template : "<div class='show'>{{title}}</div>" 
+				})
+			.when("/book",{
+				controller : "c6_2",
+				template : "<div class='show'>{{title}}</div>" 
+			})
+			.when("/game",{
+				controller : "c6_3",
+				template : "<div class='show'>{{title}}</div>" 
+			})
+		}]);
+	</script>
+</body>
+</html>

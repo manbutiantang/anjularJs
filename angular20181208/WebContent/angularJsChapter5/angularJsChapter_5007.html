@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>view组件中的模板切换</title>
+<script src="../js/angular.js" type="text/javascript"></script>
+<script src="../js/angular-route.min.js" type="text/javascript"></script>
+<style type="css/text">
+body{
+	font-size:12px;
+}
+.show{
+	background-color:#ccc;
+	padding:8px;
+	width:260px;
+	margin: 10px 0px;
+}
+</style>
+</head>
+<body>
+	<div ng-view></div>
+	<script type="text/javascript">
+		var app = angular.module("myApp",["ngRoute"]);
+		app.controller("c7_1",function($scope){
+			$scope.students = students;
+		});
+		app.controller("c7_2",function($scope,$routeParams){
+			console.log($routeParams.id);
+			for(var i=0;i < students.length;i++){
+				if(students[i].stuId == $routeParams.id){
+					$scope.student = students[i];
+					break;
+				}
+			}
+		});
+		app.config(["$routeProvider",function($routeProvider){
+			$routeProvider
+				.when("/",{
+					controller : "c7_1",
+					templateUrl : "angularJsChapter_5007_1.html" 
+				})
+			.when("/view/:id",{
+				controller : "c7_2",
+				templateUrl : "angularJsChapter_5007_2.html",
+				publicAccess : true
+			})
+		}]);
+		var students = [
+			{stuId:1000,name:" 张明明 ",sex: "woman",age:24,score:95},
+			{stuId:1001,name:" 李清思 ",sex:  "man" ,age:27,score:87 },
+			{stuId:1002,name:" 刘小花 ",sex: "woman",age:28,score:86 },
+			{stuId:1003,name:" 陈种种 ",sex:  "man" ,age:23,score:97}
+		];
+	</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>model组件的基础概念</title>
+<script src="../js/angular.js" type="text/javascript"></script>
+<style type="css/text">
+body{
+	font-size:12px;
+}
+.show{
+	background-color:#ccc;
+	padding:8px;
+	width:260px;
+	margin: 10px 0px;
+}
+</style>
+</head>
+<body>
+	<div ng-controller="c5_2">
+		<p ng-repeat="stu in data " class="show">
+			<span>{{stu.name}}</span>
+			<span>{{stu.sex}}</span>
+		</p>
+	</div>
+	<script type="text/javascript">
+		var app = angular.module("myApp",[]);
+		app.controller("c5_2",function($scope){
+			$scope.data = [
+				{name:" 张明明 ",sex: "woman",age:24,score:95},
+				{name:" 李清思 ",sex:  "man" ,age:27,score:87 },
+				{name:" 刘小花 ",sex: "woman",age:28,score:86 },
+				{name:" 陈种种 ",sex:  "man" ,age:23,score:97}
+			];
+		});
+	</script>
+</body>
+</html>
