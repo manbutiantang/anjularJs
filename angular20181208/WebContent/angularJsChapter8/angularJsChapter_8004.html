@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+<meta charset="UTF-8">
+<title>设置对象属性中的transclude属性</title>
+<script src="../js/angular.js" type="text/javascript"></script>
+<script src="../js/angular-route.min.js" type="text/javascript"></script>
+<style type="css/text">
+.frame{
+	padding: 2px 8px;
+	margin: 0px;
+	font-size: 12px;
+	width: 320px;
+	background-color:#eee;
+}
+.tip{
+	font-size:9px;
+	color:#666;
+	margin:3px 5px;
+}
+</style>
+<script type="text/ng-template" id="tpl">
+	<div class="frame">
+		<input type="text" ng-model="text" />
+		<div ng-transclude calss="tip"></div>
+	</div>
+</script>
+</head>
+<body>
+	<ts-tplscipt>{{text}}</ts-tplscipt>
+	<script type="text/javascript">
+		var app = angular.module("myApp",["ngRoute"])
+		.directive("tsTplscipt",function(){
+			return {
+				restrict:"EAC",
+				templateUrl:"tpl",
+				transclude:true
+			};
+		});
+	</script>
+</body>
+</html>
